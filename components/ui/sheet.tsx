@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as DialogPrimitive from "@radix-ui/react-dialog"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { cn } from "@/lib/utils";
 
-const Sheet = DialogPrimitive.Root
-const SheetTrigger = DialogPrimitive.Trigger
-const SheetClose = DialogPrimitive.Close
+const Sheet = DialogPrimitive.Root;
+const SheetTrigger = DialogPrimitive.Trigger;
+const SheetClose = DialogPrimitive.Close;
 
 function SheetContent({
   className,
@@ -14,7 +14,7 @@ function SheetContent({
   side = "right",
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
-  side?: "left" | "right" | "top" | "bottom"
+  side?: "left" | "right" | "top" | "bottom";
 }) {
   return (
     <DialogPrimitive.Portal>
@@ -33,23 +33,43 @@ function SheetContent({
         {children}
       </DialogPrimitive.Content>
     </DialogPrimitive.Portal>
-  )
+  );
 }
 
 function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
-  return <div className={cn("mb-4", className)} {...props} />
+  return <div className={cn("mb-4", className)} {...props} />;
 }
 
-function SheetTitle({ className, ...props }: React.ComponentProps<typeof DialogPrimitive.Title>) {
+function SheetTitle({
+  className,
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.Title>) {
   return (
-    <DialogPrimitive.Title className={cn("text-lg font-semibold", className)} {...props} />
-  )
+    <DialogPrimitive.Title
+      className={cn("text-lg font-semibold", className)}
+      {...props}
+    />
+  );
 }
 
-function SheetDescription({ className, ...props }: React.ComponentProps<typeof DialogPrimitive.Description>) {
+function SheetDescription({
+  className,
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.Description>) {
   return (
-    <DialogPrimitive.Description className={cn("text-sm text-muted-foreground", className)} {...props} />
-  )
+    <DialogPrimitive.Description
+      className={cn("text-sm text-muted-foreground", className)}
+      {...props}
+    />
+  );
 }
 
-export { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetClose }
+export {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+  SheetClose,
+};

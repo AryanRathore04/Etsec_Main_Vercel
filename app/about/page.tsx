@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion, useScroll, useTransform, useInView } from "motion/react";
@@ -531,7 +530,7 @@ export default function AboutPage() {
 
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}

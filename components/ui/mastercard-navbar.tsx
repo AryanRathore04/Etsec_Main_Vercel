@@ -9,7 +9,6 @@ import Image from "next/image";
 type NavItem = {
   label: string;
   href: string;
-  // Optional small dropdown/accordion content to show inside overlay
   content?: React.ReactNode;
 };
 
@@ -17,22 +16,21 @@ interface Props {
   items: NavItem[];
 }
 
-// Brand mark removed per request; using ETSEC logo image only
 function Hamburger({ open }: { open: boolean }) {
   return (
-    <div className="relative w-9 h-9 rounded-full bg-white/10 dark:bg-white/10 flex items-center justify-center overflow-hidden">
+    <div className="relative w-8 h-8 lg:w-7 lg:h-7 xl:w-9 xl:h-9 rounded-full bg-white/10 dark:bg-white/10 flex items-center justify-center overflow-hidden">
       <motion.span
-        className="absolute h-[2px] w-5 bg-white"
+        className="absolute h-[2px] w-4 xl:w-5 bg-white"
         animate={open ? { rotate: 45, y: 0 } : { rotate: 0, y: -6 }}
         transition={{ duration: 0.2 }}
       />
       <motion.span
-        className="absolute h-[2px] w-5 bg-white"
+        className="absolute h-[2px] w-4 xl:w-5 bg-white"
         animate={open ? { opacity: 0 } : { opacity: 1 }}
         transition={{ duration: 0.2 }}
       />
       <motion.span
-        className="absolute h-[2px] w-5 bg-white"
+        className="absolute h-[2px] w-4 xl:w-5 bg-white"
         animate={open ? { rotate: -45, y: 0 } : { rotate: 0, y: 6 }}
         transition={{ duration: 0.2 }}
       />
@@ -55,13 +53,20 @@ export default function MastercardNavbar({ items }: Props) {
     return () => document.body.classList.remove("overflow-hidden");
   }, [open]);
 
+  // Auto-close the hamburger menu when the route (pathname) changes
+  useEffect(() => {
+    if (open) {
+      setOpen(false);
+      setExpanded(null);
+    }
+  }, [pathname]);
+
   const numbered = useMemo(
     () =>
       items.map((it, i) => ({ ...it, num: String(i + 1).padStart(2, "0") })),
     [items]
   );
 
-  // Determine current page label
   const currentLabel = useMemo(() => {
     const match = items.find((i) => i.href === pathname);
     return match?.label ?? "Home";
@@ -69,12 +74,10 @@ export default function MastercardNavbar({ items }: Props) {
 
   useEffect(() => {
     const onScroll = () => {
-      // Don't collapse on home page
       if (pathname === "/") {
         setCollapsed(false);
         return;
       }
-
       const threshold = Math.max(480, Math.round(window.innerHeight * 0.9));
       setCollapsed(window.scrollY > threshold);
     };
@@ -83,13 +86,11 @@ export default function MastercardNavbar({ items }: Props) {
     return () => window.removeEventListener("scroll", onScroll);
   }, [pathname]);
 
-  // Corrected animation parameters for Framer Motion
-  const optimizedSpring = { stiffness: 120, damping: 25 }; // Smoother spring animation
+  const optimizedSpring = { stiffness: 120, damping: 25 };
   const optimizedTransition = {
     duration: 0.3,
     ease: [0.4, 0.0, 0.2, 1] as const,
-  }; // Smoother transition
-
+  };
   return (
     <>
       <motion.nav
@@ -103,14 +104,10 @@ export default function MastercardNavbar({ items }: Props) {
           <motion.div
             layout
             transition={{ ...optimizedSpring }}
-            className={`grid items-center ${
-              collapsed
-                ? "grid-cols-[minmax(60px,auto)_1fr_minmax(40px,auto)] gap-1 px-2 sm:px-3"
-                : "grid-cols-[auto_1fr_auto] gap-4 px-4 sm:px-6"
-            } rounded-full bg-white/10 backdrop-blur-xl border border-white/15 shadow-lg py-2`}
+            className="flex items-center justify-between w-[92vw] sm:w-auto px-3 sm:px-4 md:px-5 lg:px-6 rounded-full bg-white/10 backdrop-blur-xl border border-white/15 shadow-lg py-2"
           >
             {/* Left: Logo */}
-            <div className="flex items-center justify-start">
+            <div className="flex items-center justify-start flex-[1]">
               <Link
                 href="/"
                 className="flex items-center text-white font-semibold"
@@ -121,7 +118,9 @@ export default function MastercardNavbar({ items }: Props) {
                   width={collapsed ? 70 : 100}
                   height={collapsed ? 22 : 32}
                   className={`${
-                    collapsed ? "h-5" : "h-8"
+                    collapsed
+                      ? "h-5 md:h-4 lg:h-4 xl:h-5"
+                      : "h-8 md:h-7 lg:h-7 xl:h-8"
                   } w-auto object-contain transition-all duration-300`}
                   priority
                   quality={100}
@@ -129,42 +128,12 @@ export default function MastercardNavbar({ items }: Props) {
               </Link>
             </div>
 
-            {/* Center: Links (expanded) or Current Page (collapsed) */}
-            <div className="min-w-0 flex justify-center">
+            {/* Center: Links / Label */}
+            <div className="flex-[2] flex justify-center items-center overflow-x-auto touch-pan-x px-0 sm:px-4 md:px-4 xl:px-6 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
               <AnimatePresence mode="wait" initial={false}>
-                {!collapsed ? (
+                {collapsed ? (
                   <motion.div
-                    key="links"
-                    layout
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                    transition={optimizedTransition}
-                    className="hidden md:flex items-center gap-6"
-                  >
-                    {numbered.map((it) => (
-                      <Link
-                        href={it.href}
-                        key={it.href}
-                        className={`text-sm font-medium transition-colors ${
-                          pathname === it.href
-                            ? "text-white"
-                            : "text-white/80 hover:text-white"
-                        }`}
-                      >
-                        {pathname === it.href ? (
-                          <motion.span layoutId="current-label">
-                            {it.label}
-                          </motion.span>
-                        ) : (
-                          <span>{it.label}</span>
-                        )}
-                      </Link>
-                    ))}
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="label"
+                    key="label-collapsed"
                     layout
                     initial={{ opacity: 0, y: -6 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -172,16 +141,74 @@ export default function MastercardNavbar({ items }: Props) {
                     transition={optimizedTransition}
                     className="flex items-center justify-center w-full overflow-hidden"
                   >
-                    <span className="text-white/95 text-xs sm:text-sm font-medium whitespace-nowrap">
+                    <span className="text-white/95 text-sm md:text-base font-medium whitespace-nowrap">
                       {currentLabel}
                     </span>
                   </motion.div>
+                ) : (
+                  <>
+                    {/* XL: full links */}
+                    <motion.div
+                      key="links-xl"
+                      layout
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={optimizedTransition}
+                      className="hidden xl:flex items-center whitespace-nowrap gap-2 md:gap-3 lg:gap-4 xl:gap-6"
+                    >
+                      {/* Desktop-only left spacer to avoid hugging the logo */}
+                      <span
+                        aria-hidden
+                        className="hidden xl:block shrink-0 w-12"
+                      />
+                      {numbered.map((it) => (
+                        <Link
+                          href={it.href}
+                          key={it.href}
+                          className={`text-[12px] md:text-[13px] lg:text-[13px] xl:text-base font-medium transition-colors inline-flex items-center ${
+                            pathname === it.href
+                              ? "text-white"
+                              : "text-white/80 hover:text-white"
+                          }`}
+                        >
+                          {pathname === it.href ? (
+                            <motion.span layoutId="current-label">
+                              {it.label}
+                            </motion.span>
+                          ) : (
+                            <span>{it.label}</span>
+                          )}
+                        </Link>
+                      ))}
+                      {/* Desktop-only right spacer to avoid hugging the hamburger */}
+                      <span
+                        aria-hidden
+                        className="hidden xl:block shrink-0 w-10"
+                      />
+                    </motion.div>
+
+                    {/* Below XL: current label */}
+                    <motion.div
+                      key="label-subxl"
+                      layout
+                      initial={{ opacity: 0, y: -6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={optimizedTransition}
+                      className="flex xl:hidden items-center justify-center w-full overflow-hidden"
+                    >
+                      <span className="text-white/95 text-sm md:text-base font-medium whitespace-nowrap">
+                        {currentLabel}
+                      </span>
+                    </motion.div>
+                  </>
                 )}
               </AnimatePresence>
             </div>
 
             {/* Right: Hamburger */}
-            <div className="flex justify-end items-center">
+            <div className="flex items-center justify-end flex-[1]">
               <button
                 aria-label={open ? "Close menu" : "Open menu"}
                 aria-expanded={open}
@@ -195,7 +222,7 @@ export default function MastercardNavbar({ items }: Props) {
         </LayoutGroup>
       </motion.nav>
 
-      {/* Overlay menu */}
+      {/* Overlay (unchanged) */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -206,7 +233,6 @@ export default function MastercardNavbar({ items }: Props) {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-[59] flex items-start justify-center px-2 sm:px-6 pt-24 pb-6"
           >
-            {/* Dim background under rounded panel */}
             <div
               className="absolute inset-0 -z-10 bg-black/30"
               onClick={() => setOpen(false)}
@@ -222,28 +248,23 @@ export default function MastercardNavbar({ items }: Props) {
               className="relative w-full max-w-5xl bg-white rounded-3xl shadow-2xl border border-black/[0.06] overflow-hidden"
             >
               <div className="p-6 sm:p-10">
-                {/* Header inside overlay */}
                 <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-2">
-                    <Image
-                      src="/ETSEC.png"
-                      alt="ETSEC Logo"
-                      width={96}
-                      height={28}
-                      className="h-7 w-auto object-contain"
-                      priority
-                      quality={100}
-                    />
-                  </div>
+                  <Image
+                    src="/ETSEC.png"
+                    alt="ETSEC Logo"
+                    width={96}
+                    height={28}
+                    className="h-7 w-auto object-contain"
+                    priority
+                    quality={100}
+                  />
                   <div className="text-sm text-black/60">
                     Goals | {String(items.length).padStart(2, "0")}
                   </div>
                 </div>
 
-                {/* Divider */}
                 <div className="h-px bg-black/[0.06]" />
 
-                {/* Items list */}
                 <ul className="divide-y divide-black/[0.06]">
                   {numbered.map((it, idx) => {
                     const isOpen = expanded === idx;
@@ -262,30 +283,13 @@ export default function MastercardNavbar({ items }: Props) {
                           </span>
                           <span className="flex-1 text-xl sm:text-3xl font-semibold text-black">
                             {it.label}
-                            <span className="align-super ml-2 text-xs bg-black/5 rounded-full px-2 py-0.5 text-black/50">
-                              {String(3).padStart(2, "0")}
-                            </span>
                           </span>
                           <motion.span
                             animate={{ rotate: isOpen ? 180 : 0 }}
                             transition={{ duration: 0.2 }}
                             className="text-black/60"
                           >
-                            <svg
-                              width="20"
-                              height="20"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M6 9L12 15L18 9"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                            </svg>
+                            ▼
                           </motion.span>
                         </button>
 
@@ -310,20 +314,12 @@ export default function MastercardNavbar({ items }: Props) {
                                       <Link
                                         href={it.href}
                                         className="underline underline-offset-4"
+                                        onClick={() => {
+                                          setOpen(false);
+                                          setExpanded(null);
+                                        }}
                                       >
                                         Open {it.label}
-                                      </Link>
-                                      <Link
-                                        href="#"
-                                        className="text-black/60 hover:text-black"
-                                      >
-                                        Overview
-                                      </Link>
-                                      <Link
-                                        href="#"
-                                        className="text-black/60 hover:text-black"
-                                      >
-                                        Resources
                                       </Link>
                                     </div>
                                   </div>

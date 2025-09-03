@@ -135,7 +135,7 @@ export default function HomePage() {
 
         {/* Text container - centered and above background */}
         <div className="container mx-auto max-w-4xl px-4 relative z-20 flex items-center justify-center min-h-screen">
-          <div className="text-center space-y-8 flex flex-col items-center justify-center w-full mt-[113px] sm:mt-0">
+          <div className="text-center space-y-8 flex flex-col items-center justify-center w-full mt-4 sm:mt-5 md:mt-0">
             {/* Animated Badge with accordion.net.au style */}
             <AnimatedHero delay={0}>
               <AnimatedBadge
@@ -148,7 +148,7 @@ export default function HomePage() {
 
             {/* Heading with smooth text reveals */}
             <AnimatedHero delay={0.1}>
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-heading font-bold text-foreground leading-[0.9] tracking-tight text-center">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-bold text-foreground leading-[0.9] tracking-tight text-center">
                 <SmoothTextReveal
                   delay={200}
                   speed="ultra-fast"
@@ -173,7 +173,7 @@ export default function HomePage() {
               <SmoothTextReveal
                 delay={800}
                 speed="ultra-fast"
-                className="text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-sans text-center mt-6"
+                className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-sans text-center mt-4"
                 onComplete={() => handleAnimationComplete("subtitle")}
               >
                 Advanced cybersecurity solutions that protect your business from
@@ -185,13 +185,13 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
                 <AnimatedHoverButton
                   delay={allTextAnimationsComplete ? 1200 : 1600}
-                  containerClassName="w-full sm:w-auto"
-                  className="px-2 py-1 text-base h-10 min-h-0"
+                  containerClassName="w-auto"
+                  className="px-2 py-1 text-sm h-9 sm:px-4 sm:py-2 sm:text-base sm:h-10 min-h-0"
                   duration={1.5}
                   clockwise={true}
                   onClick={handleBookCall}
                 >
-                  <span className="flex items-center gap-2 text-base">
+                  <span className="flex items-center gap-2 text-sm sm:text-base">
                     Book a Free Call
                     <ArrowRight className="h-4 w-4" />
                   </span>
@@ -201,7 +201,7 @@ export default function HomePage() {
                   delay={allTextAnimationsComplete ? 1400 : 1800}
                   variant="ghost"
                   size="sm"
-                  className="px-8 py-6 text-base text-white hover:text-gray-900 border border-white/30 bg-white/10 hover:bg-white transition-colors"
+                  className="w-full sm:w-auto px-6 py-4 sm:px-8 sm:py-6 text-base text-white hover:text-gray-900 border border-white/30 bg-white/10 hover:bg-white transition-colors"
                   onClick={handleLearnMore}
                 >
                   Learn More

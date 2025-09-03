@@ -9,17 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Ripple } from "@/components/ui/ripple";
-import {
-  Phone,
-  Mail,
-  MessageSquare,
-  Clock,
-  Shield,
-  ArrowRight,
-  Headphones,
-  Send,
-  Calendar,
-} from "lucide-react";
+import { Phone, Mail, Shield, ArrowRight, Headphones, Send, Calendar } from "lucide-react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -46,25 +36,6 @@ const contactMethods = [
     responseTime: "Within 2 hours",
     gradient: "from-cyan-500/20 to-blue-600/20",
     action: "Send Email",
-  },
-  {
-    icon: Phone,
-    title: "24/7 Emergency Line",
-    description:
-      "Immediate response for critical security incidents and threats",
-    contact: "+1 (555) ETSEC-24",
-    responseTime: "Immediate response",
-    gradient: "from-red-500/20 to-orange-600/20",
-    action: "Call Now",
-  },
-  {
-    icon: MessageSquare,
-    title: "Sales Consultation",
-    description: "Discuss custom solutions and enterprise security strategies",
-    contact: "Schedule a Call",
-    responseTime: "Next business day",
-    gradient: "from-green-500/20 to-emerald-600/20",
-    action: "Book Meeting",
   },
   {
     icon: Headphones,
@@ -169,7 +140,6 @@ function ContactPageContent() {
 
   // Button action handlers
   const handleSendMessage = useButtonAction("sendMessage");
-  const handleEmergencyCall = useButtonAction("emergencyCall");
   const handleEmailSupport = useButtonAction("emailSupport");
   const handleScheduleConsultation = useButtonAction("scheduleConsultation");
 
@@ -214,7 +184,7 @@ function ContactPageContent() {
           className="absolute inset-0"
         />
 
-        <div className="container mx-auto max-w-5xl px-4 relative z-10 mt-[113px] sm:mt-0">
+  <div className="container mx-auto max-w-5xl px-4 relative z-10 mt-4 sm:mt-0">
           <motion.div
             className="text-center space-y-10"
             initial="hidden"
@@ -288,7 +258,7 @@ function ContactPageContent() {
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -488,32 +458,7 @@ function ContactPageContent() {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Emergency Hotline */}
-              <motion.div variants={itemVariants}>
-                <Card
-                  className="bg-white/5 border-white/10 p-6 hover:bg-white/10 transition-all duration-300 h-full cursor-pointer"
-                  onClick={handleEmergencyCall}
-                >
-                  <div className="text-center space-y-4">
-                    <div className="w-16 h-16 bg-gradient-to-r from-red-500/20 to-orange-600/20 rounded-2xl flex items-center justify-center mx-auto">
-                      <Phone className="w-8 h-8 text-red-400" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-white">
-                        Emergency Hotline
-                      </h3>
-                      <p className="text-red-400 font-medium text-lg">
-                        +1 (555) ETSEC-24
-                      </p>
-                      <p className="text-gray-400 text-sm">
-                        Available 24/7 for critical incidents
-                      </p>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
               {/* Email Support */}
               <motion.div variants={itemVariants}>
                 <Card
@@ -760,11 +705,13 @@ function ContactPageContent() {
 
 export default function ContactPage() {
   return (
-    <Suspense fallback={
-      <div className="min-h-screen bg-[#09090B] flex items-center justify-center">
-        <div className="text-white text-xl">Loading...</div>
-      </div>
-    }>
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-[#09090B] flex items-center justify-center">
+          <div className="text-white text-xl">Loading...</div>
+        </div>
+      }
+    >
       <ContactPageContent />
     </Suspense>
   );

@@ -1,6 +1,21 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, MapPin, Twitter, Linkedin, Github } from "lucide-react";
+import type { SVGProps } from "react";
+import { Mail, Phone, MapPin, Linkedin, Instagram } from "lucide-react";
+
+function XIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="M18.244 2.25h3.513l-7.82 8.7L24 21.75h-7.35l-5.74-6.87-6.0 6.87H1.41l8.32-8.76L0 2.25h7.35l5.39 6.45 5.504-6.45z" />
+    </svg>
+  );
+}
 
 export function Footer() {
   return (
@@ -11,11 +26,13 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center">
               <Image
-                src="/etsec-logo-icon.png"
+                src="/ETSEC.png"
                 alt="ETSEC Logo"
-                width={32}
-                height={32}
-                className="h-8 w-8"
+                width={160}
+                height={40}
+                className="h-8 sm:h-9 md:h-10 w-auto object-contain"
+                priority
+                quality={100}
               />
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
@@ -119,8 +136,8 @@ export function Footer() {
                 href="#"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
+                <XIcon className="h-5 w-5" />
+                <span className="sr-only">X</span>
               </Link>
               <Link
                 href="#"
@@ -133,8 +150,8 @@ export function Footer() {
                 href="#"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
-                <Github className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
+                <Instagram className="h-5 w-5" />
+                <span className="sr-only">Instagram</span>
               </Link>
             </div>
           </div>

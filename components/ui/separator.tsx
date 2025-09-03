@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function Separator({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -8,7 +8,7 @@ function Separator({ className, ...props }: React.ComponentProps<"div">) {
       className={cn("bg-border h-px w-full", className)}
       {...props}
     />
-  )
+  );
 }
 
-export { Separator }
+export { Separator };
