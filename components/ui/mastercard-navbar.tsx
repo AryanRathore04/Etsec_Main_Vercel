@@ -41,7 +41,6 @@ function Hamburger({ open }: { open: boolean }) {
 export default function MastercardNavbar({ items }: Props) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [expanded, setExpanded] = useState<number | null>(null);
   const [mounted, setMounted] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
 
@@ -57,7 +56,6 @@ export default function MastercardNavbar({ items }: Props) {
   useEffect(() => {
     if (open) {
       setOpen(false);
-      setExpanded(null);
     }
   }, [pathname]);
 
@@ -258,79 +256,28 @@ export default function MastercardNavbar({ items }: Props) {
                     priority
                     quality={100}
                   />
-                  <div className="text-sm text-black/60">
-                    Goals | {String(items.length).padStart(2, "0")}
-                  </div>
                 </div>
 
                 <div className="h-px bg-black/[0.06]" />
 
                 <ul className="divide-y divide-black/[0.06]">
-                  {numbered.map((it, idx) => {
-                    const isOpen = expanded === idx;
-                    return (
-                      <li key={it.href} className="py-4 sm:py-6">
-                        <button
-                          className="w-full flex items-center gap-3 sm:gap-6 text-left"
-                          onClick={() =>
-                            setExpanded((v) => (v === idx ? null : idx))
-                          }
-                          aria-expanded={isOpen}
-                          aria-controls={`item-${idx}`}
-                        >
-                          <span className="w-10 sm:w-12 text-xs sm:text-sm tabular-nums text-black/40">
-                            {String(idx + 1).padStart(2, "0")}
-                          </span>
-                          <span className="flex-1 text-xl sm:text-3xl font-semibold text-black">
-                            {it.label}
-                          </span>
-                          <motion.span
-                            animate={{ rotate: isOpen ? 180 : 0 }}
-                            transition={{ duration: 0.2 }}
-                            className="text-black/60"
-                          >
-                            ▼
-                          </motion.span>
-                        </button>
-
-                        <AnimatePresence initial={false}>
-                          {isOpen && (
-                            <motion.div
-                              id={`item-${idx}`}
-                              initial={{ height: 0, opacity: 0 }}
-                              animate={{ height: "auto", opacity: 1 }}
-                              exit={{ height: 0, opacity: 0 }}
-                              transition={{ duration: 0.25, ease: "easeOut" }}
-                              className="overflow-hidden pl-10 sm:pl-12 pr-2"
-                            >
-                              <div className="pt-3 sm:pt-4 pb-2 text-black/70 leading-relaxed">
-                                {it.content ?? (
-                                  <div className="text-sm sm:text-base">
-                                    <p className="mb-2">
-                                      Explore more about {it.label} and how we
-                                      help you succeed.
-                                    </p>
-                                    <div className="flex flex-wrap gap-3">
-                                      <Link
-                                        href={it.href}
-                                        className="underline underline-offset-4"
-                                        onClick={() => {
-                                          setOpen(false);
-                                          setExpanded(null);
-                                        }}
-                                      >
-                                        Open {it.label}
-                                      </Link>
-                                    </div>
-                                  </div>
-                                )}
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </li>
-                    );
-                  })}
+                  {numbered.map((it, idx) => (
+                    <li key={it.href} className="py-3 sm:py-4">
+                      <Link
+                        href={it.href}
+                        className="w-full flex items-center gap-3 sm:gap-6 text-left"
+                        onClick={() => setOpen(false)}
+                      >
+                        <span className="w-10 sm:w-12 text-xs sm:text-sm tabular-nums text-black/40">
+                          {String(idx + 1).padStart(2, "0")}
+                        </span>
+                        <span className="flex-1 text-xl sm:text-2xl font-semibold text-black">
+                          {it.label}
+                        </span>
+                        <span className="text-black/60">→</span>
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </motion.div>
