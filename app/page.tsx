@@ -201,7 +201,7 @@ export default function HomePage() {
                   delay={allTextAnimationsComplete ? 1400 : 1800}
                   variant="ghost"
                   size="sm"
-                  className="w-full sm:w-auto px-6 py-4 sm:px-8 sm:py-6 text-base text-white hover:text-gray-900 border border-white/30 bg-white/10 hover:bg-white transition-colors"
+                  className="rounded-full px-6 py-3 text-lg h-12 sm:px-8 sm:py-4 sm:text-xl sm:h-14 min-h-0 text-white border border-white/30 bg-white/10"
                   onClick={handleLearnMore}
                 >
                   Learn More
