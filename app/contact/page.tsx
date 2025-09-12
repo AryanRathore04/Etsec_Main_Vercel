@@ -9,7 +9,15 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Ripple } from "@/components/ui/ripple";
-import { Phone, Mail, Shield, ArrowRight, Headphones, Send, Calendar } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  Shield,
+  ArrowRight,
+  Headphones,
+  Send,
+  Calendar,
+} from "lucide-react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -184,7 +192,7 @@ function ContactPageContent() {
           className="absolute inset-0"
         />
 
-  <div className="container mx-auto max-w-5xl px-4 relative z-10 mt-4 sm:mt-0">
+        <div className="container mx-auto max-w-5xl px-4 relative z-10 mt-4 sm:mt-0">
           <motion.div
             className="text-center space-y-10"
             initial="hidden"
@@ -599,25 +607,135 @@ function ContactPageContent() {
           >
             {[
               {
+                question: "What cybersecurity services does ETSEC offer?",
+                answer: (
+                  <>
+                    <p>
+                      ETSEC offers a comprehensive suite of enterprise-grade
+                      cybersecurity services designed to protect your
+                      organization's digital assets. Core offerings include:
+                    </p>
+                    <ul className="list-disc pl-5 space-y-2">
+                      <li>
+                        Security Operations Center (SOC) setup, co-management,
+                        and fully managed services
+                      </li>
+                      <li>Advanced Network Monitoring &amp; Detection</li>
+                      <li>
+                        Vulnerability Assessment &amp; Penetration Testing
+                        (VAPT) for Web, Mobile, and IT Infrastructure
+                      </li>
+                      <li>Proactive Threat Intelligence &amp; Hunting</li>
+                      <li>Malware Forensics &amp; Reverse Engineering</li>
+                      <li>
+                        Custom Open Source Intelligence (OSINT) investigations
+                      </li>
+                      <li>Incident Response Planning &amp; Execution</li>
+                    </ul>
+                  </>
+                ),
+              },
+              {
                 question:
-                  "What is your typical response time for support requests?",
-                answer:
-                  "We respond to all inquiries within 2 hours during business hours (9 AM - 6 PM PST). For emergency security incidents, we provide 24/7 support with immediate response capabilities.",
+                  "How does the engagement process work for cybersecurity services?",
+                answer: (
+                  <>
+                    <p>
+                      Our engagement process is structured for clarity and
+                      efficiency:
+                    </p>
+                    <ol className="list-decimal pl-5 space-y-2">
+                      <li>
+                        <strong>Initial Inquiry:</strong> You reach out with
+                        your cybersecurity needs.
+                      </li>
+                      <li>
+                        <strong>Scoping Call:</strong> We discuss requirements,
+                        infrastructure, and objectives.
+                      </li>
+                      <li>
+                        <strong>Proposal &amp; Quotation:</strong> You receive a
+                        tailored service proposal and transparent quotation.
+                      </li>
+                      <li>
+                        <strong>NDA &amp; Contract Signing:</strong> We
+                        formalize scope, deliverables, timelines, and terms.
+                      </li>
+                      <li>
+                        <strong>Service Initiation:</strong> We onboard your
+                        team and begin the agreed services.
+                      </li>
+                    </ol>
+                  </>
+                ),
               },
               {
-                question: "Do you offer free security assessments?",
-                answer:
-                  "Yes, we provide complimentary initial security assessments to help evaluate your current security posture and identify potential vulnerabilities in your infrastructure.",
+                question:
+                  "Do you offer one-time security audits or only ongoing services?",
+                answer: (
+                  <>
+                    <p>We offer both, depending on your needs:</p>
+                    <ul className="list-disc pl-5 space-y-2">
+                      <li>
+                        <strong>One-time assessments:</strong> Single-instance
+                        VAPT, security audits, or forensic investigations.
+                      </li>
+                      <li>
+                        <strong>Ongoing retainer-based services:</strong>{" "}
+                        Managed SOC, recurring scans, and continuous threat
+                        intelligence.
+                      </li>
+                    </ul>
+                    <p>
+                      We tailor the engagement model to your budget and security
+                      posture.
+                    </p>
+                  </>
+                ),
               },
               {
-                question: "How is your pricing structured?",
-                answer:
-                  "Our pricing is customized based on your organization's size, industry requirements, and specific security needs. Contact us for a personalized quote tailored to your situation.",
+                question:
+                  "How secure is my company's data with ETSEC during service delivery?",
+                answer: (
+                  <>
+                    <p>
+                      Data security and client confidentiality are paramount at
+                      ETSEC. We ensure protection through:
+                    </p>
+                    <ul className="list-disc pl-5 space-y-2">
+                      <li>
+                        <strong>Strict confidentiality:</strong> All staff are
+                        bound by confidentiality agreements.
+                      </li>
+                      <li>
+                        <strong>NDAs:</strong> Formal Non-Disclosure Agreements
+                        with all clients before accessing sensitive data.
+                      </li>
+                      <li>
+                        <strong>Compliance frameworks:</strong> Alignment with
+                        ISO 27001, GDPR, and industry best practices.
+                      </li>
+                      <li>
+                        <strong>Technical safeguards:</strong> Encrypted
+                        communications, secure storage, and robust access
+                        controls.
+                      </li>
+                    </ul>
+                  </>
+                ),
               },
               {
-                question: "Can you help with compliance requirements?",
-                answer:
-                  "Absolutely. We help organizations achieve and maintain compliance with various standards including SOC 2, ISO 27001, GDPR, HIPAA, and industry-specific regulations.",
+                question:
+                  "Can I request a custom service package tailored to my business needs?",
+                answer: (
+                  <>
+                    <p>
+                      Absolutely. Our services are modular and highly flexible.
+                      Share your unique challenges and requirements, and we'll
+                      craft a custom package aligned with your goals and budget.
+                    </p>
+                  </>
+                ),
               },
             ].map((faq, index) => (
               <motion.div
@@ -630,30 +748,16 @@ function ContactPageContent() {
                     <h3 className="text-lg font-bold text-white">
                       {faq.question}
                     </h3>
-                    <p className="text-gray-300 leading-relaxed">
+                    <div className="text-gray-300 leading-relaxed space-y-3">
                       {faq.answer}
-                    </p>
+                    </div>
                   </div>
                 </Card>
               </motion.div>
             ))}
           </motion.div>
 
-          <motion.div
-            className="text-center mt-12"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={itemVariants}
-          >
-            <Button
-              variant="outline"
-              className="border-white/20 text-white hover:bg-white/10 px-8 py-3"
-            >
-              View All FAQs
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          </motion.div>
+          {/* Removed 'View All FAQs' button per request */}
         </div>
       </section>
 

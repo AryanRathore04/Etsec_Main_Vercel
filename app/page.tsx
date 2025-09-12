@@ -134,7 +134,7 @@ export default function HomePage() {
         </AnimatePresence>
 
         {/* Text container - centered and above background */}
-        <div className="container mx-auto max-w-4xl px-4 relative z-20 flex items-center justify-center min-h-screen">
+        <div className="container mx-auto max-w-5xl xl:max-w-6xl px-2 sm:px-4 relative z-20 flex items-center justify-center min-h-screen">
           <div className="text-center space-y-8 flex flex-col items-center justify-center w-full mt-4 sm:mt-5 md:mt-0">
             {/* Animated Badge with accordion.net.au style */}
             <AnimatedHero delay={0}>
@@ -149,23 +149,41 @@ export default function HomePage() {
             {/* Heading with smooth text reveals */}
             <AnimatedHero delay={0.1}>
               <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-bold text-foreground leading-[0.9] tracking-tight text-center">
-                <SmoothTextReveal
-                  delay={200}
-                  speed="ultra-fast"
-                  className="block mb-6"
-                  onComplete={() => handleAnimationComplete("line1")}
-                >
-                  Secure Your Digital
-                </SmoothTextReveal>
+                <span className="block mb-6">
+                  <SmoothTextReveal
+                    delay={200}
+                    speed="ultra-fast"
+                    className="inline"
+                  >
+                    {"Rooted in "}
+                  </SmoothTextReveal>
+                  <SmoothTextReveal
+                    delay={260}
+                    speed="ultra-fast"
+                    className="inline text-teal-400"
+                    onComplete={() => handleAnimationComplete("line1")}
+                  >
+                    {"Trust,"}
+                  </SmoothTextReveal>
+                </span>
 
-                <SmoothTextReveal
-                  delay={500}
-                  speed="ultra-fast"
-                  className="text-white"
-                  onComplete={() => handleAnimationComplete("line2")}
-                >
-                  Future Today
-                </SmoothTextReveal>
+                <span className="block whitespace-nowrap text-[8.5vw] sm:text-6xl md:text-7xl lg:text-8xl">
+                  <SmoothTextReveal
+                    delay={500}
+                    speed="ultra-fast"
+                    className="inline text-teal-400"
+                  >
+                    {"Growing "}
+                  </SmoothTextReveal>
+                  <SmoothTextReveal
+                    delay={560}
+                    speed="ultra-fast"
+                    className="inline text-white"
+                    onComplete={() => handleAnimationComplete("line2")}
+                  >
+                    {"in Security."}
+                  </SmoothTextReveal>
+                </span>
               </h1>
             </AnimatedHero>
 
@@ -176,8 +194,9 @@ export default function HomePage() {
                 className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-sans text-center mt-4"
                 onComplete={() => handleAnimationComplete("subtitle")}
               >
-                Advanced cybersecurity solutions that protect your business from
-                evolving threats with AI-powered detection and 24/7 monitoring.
+                Leading cybersecurity solutions and comprehensive training
+                programs to protect your digital future. Secure your business
+                with expert guidance and cutting-edge technology.
               </SmoothTextReveal>
             </AnimatedSubtext>
 
@@ -192,7 +211,7 @@ export default function HomePage() {
                   onClick={handleBookCall}
                 >
                   <span className="flex items-center gap-2 text-sm sm:text-base">
-                    Book a Free Call
+                    Start Securing Now
                     <ArrowRight className="h-4 w-4" />
                   </span>
                 </AnimatedHoverButton>
@@ -233,11 +252,12 @@ export default function HomePage() {
               <CardSkeletonContainer>
                 <ThreatDetectionSkeleton />
               </CardSkeletonContainer>
-              <AnimatedCardTitle>Real-Time Threat Detection</AnimatedCardTitle>
+              <AnimatedCardTitle>
+                24/7 Advanced Threat Detection
+              </AnimatedCardTitle>
               <AnimatedCardDescription>
-                Advanced AI-powered threat detection with instant response
-                capabilities to protect your digital assets from emerging cyber
-                threats.
+                Continuous monitoring powered by AI and managed response to stop
+                attacks the moment they surface — day and night.
               </AnimatedCardDescription>
             </AnimatedCard>
 
@@ -245,11 +265,11 @@ export default function HomePage() {
               <CardSkeletonContainer>
                 <AIAnalyticsSkeleton />
               </CardSkeletonContainer>
-              <AnimatedCardTitle>AI-Powered Analytics</AnimatedCardTitle>
+              <AnimatedCardTitle>Satellite Security Services</AnimatedCardTitle>
               <AnimatedCardDescription>
-                Leverage cutting-edge artificial intelligence to analyze
-                security patterns and provide predictive insights for proactive
-                defense.
+                Protect satellite links and ground stations with end-to-end
+                encryption, telemetry hardening, and real-time anomaly detection
+                across space assets.
               </AnimatedCardDescription>
             </AnimatedCard>
 
@@ -257,11 +277,10 @@ export default function HomePage() {
               <CardSkeletonContainer>
                 <TeamIntegrationSkeleton />
               </CardSkeletonContainer>
-              <AnimatedCardTitle>Seamless Team Integration</AnimatedCardTitle>
+              <AnimatedCardTitle>Blockchain Security</AnimatedCardTitle>
               <AnimatedCardDescription>
-                Effortlessly integrate with your existing infrastructure and
-                team workflows for minimal disruption and maximum security
-                coverage.
+                Smart‑contract audits, secure key management, and on‑chain
+                threat monitoring to safeguard digital assets and protocols.
               </AnimatedCardDescription>
             </AnimatedCard>
           </div>
@@ -507,8 +526,9 @@ export default function HomePage() {
 
             <div className="lg:col-span-2">
               <Accordion type="single" collapsible className="w-full space-y-4">
+                {/* Q1 */}
                 <AccordionItem
-                  value="processes"
+                  value="services"
                   className="rounded-lg px-6"
                   style={{
                     backgroundColor: "#09090B",
@@ -516,17 +536,37 @@ export default function HomePage() {
                   }}
                 >
                   <AccordionTrigger className="text-left font-heading hover:no-underline">
-                    What types of processes can you automate?
+                    What cybersecurity services does ETSEC offer?
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground font-sans">
-                    We specialize in automating repetitive workflows across
-                    operations, marketing, sales, and customer support using AI
-                    and custom logic.
+                  <AccordionContent className="text-muted-foreground font-sans space-y-3">
+                    <p>
+                      ETSEC offers a comprehensive suite of enterprise-grade
+                      cybersecurity services designed to protect your
+                      organization's digital assets. Core offerings include:
+                    </p>
+                    <ul className="list-disc pl-5 space-y-2">
+                      <li>
+                        Security Operations Center (SOC) setup, co-management,
+                        and fully managed services
+                      </li>
+                      <li>Advanced Network Monitoring &amp; Detection</li>
+                      <li>
+                        Vulnerability Assessment &amp; Penetration Testing
+                        (VAPT) for Web, Mobile, and IT Infrastructure
+                      </li>
+                      <li>Proactive Threat Intelligence &amp; Hunting</li>
+                      <li>Malware Forensics &amp; Reverse Engineering</li>
+                      <li>
+                        Custom Open Source Intelligence (OSINT) investigations
+                      </li>
+                      <li>Incident Response Planning &amp; Execution</li>
+                    </ul>
                   </AccordionContent>
                 </AccordionItem>
 
+                {/* Q2 */}
                 <AccordionItem
-                  value="technical"
+                  value="engagement"
                   className="rounded-lg px-6"
                   style={{
                     backgroundColor: "#09090B",
@@ -534,17 +574,42 @@ export default function HomePage() {
                   }}
                 >
                   <AccordionTrigger className="text-left font-heading hover:no-underline">
-                    Do I need technical knowledge to use your service?
+                    How does the engagement process work for cybersecurity
+                    services?
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground font-sans">
-                    No technical knowledge required. Our team handles all the
-                    technical implementation while you focus on your business
-                    goals.
+                  <AccordionContent className="text-muted-foreground font-sans space-y-3">
+                    <p>
+                      Our engagement process is structured for clarity and
+                      efficiency:
+                    </p>
+                    <ol className="list-decimal pl-5 space-y-2">
+                      <li>
+                        <strong>Initial Inquiry:</strong> Share your
+                        cybersecurity needs with us.
+                      </li>
+                      <li>
+                        <strong>Scoping Call:</strong> We discuss requirements,
+                        infrastructure, and objectives in detail.
+                      </li>
+                      <li>
+                        <strong>Proposal &amp; Quotation:</strong> Receive a
+                        tailored proposal and transparent pricing.
+                      </li>
+                      <li>
+                        <strong>NDA &amp; Contract Signing:</strong> Formalize
+                        scope, deliverables, timelines, and terms.
+                      </li>
+                      <li>
+                        <strong>Service Initiation:</strong> We onboard your
+                        team and kick off the engagement.
+                      </li>
+                    </ol>
                   </AccordionContent>
                 </AccordionItem>
 
+                {/* Q3 */}
                 <AccordionItem
-                  value="integration"
+                  value="audit-or-ongoing"
                   className="rounded-lg px-6"
                   style={{
                     backgroundColor: "#09090B",
@@ -552,16 +617,32 @@ export default function HomePage() {
                   }}
                 >
                   <AccordionTrigger className="text-left font-heading hover:no-underline">
-                    Can you integrate with our existing tools?
+                    Do you offer one-time security audits or only ongoing
+                    services?
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground font-sans">
-                    Yes, we integrate with 500+ popular business tools and can
-                    create custom integrations for your specific needs.
+                  <AccordionContent className="text-muted-foreground font-sans space-y-3">
+                    <p>We offer both engagement models:</p>
+                    <ul className="list-disc pl-5 space-y-2">
+                      <li>
+                        <strong>One-time assessments:</strong> Single-instance
+                        VAPT, security audits, or specific forensic
+                        investigations.
+                      </li>
+                      <li>
+                        <strong>Ongoing retainer-based services:</strong>{" "}
+                        Managed SOC, recurring vulnerability scans, and
+                        continuous threat intelligence.
+                      </li>
+                    </ul>
+                    <p>
+                      We tailor the model to your budget and security posture.
+                    </p>
                   </AccordionContent>
                 </AccordionItem>
 
+                {/* Q4 */}
                 <AccordionItem
-                  value="implementation"
+                  value="data-security"
                   className="rounded-lg px-6"
                   style={{
                     backgroundColor: "#09090B",
@@ -569,16 +650,39 @@ export default function HomePage() {
                   }}
                 >
                   <AccordionTrigger className="text-left font-heading hover:no-underline">
-                    How long does implementation take?
+                    How secure is my company's data with ETSEC during service
+                    delivery?
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground font-sans">
-                    Most implementations take 2-4 weeks depending on complexity.
-                    We provide regular updates throughout the process.
+                  <AccordionContent className="text-muted-foreground font-sans space-y-3">
+                    <p>
+                      Data security and client confidentiality are paramount at
+                      ETSEC. We ensure protection through:
+                    </p>
+                    <ul className="list-disc pl-5 space-y-2">
+                      <li>
+                        <strong>Strict confidentiality:</strong> All staff are
+                        bound by strong confidentiality agreements.
+                      </li>
+                      <li>
+                        <strong>Non-Disclosure Agreements (NDAs):</strong>{" "}
+                        Signed with all clients before accessing sensitive data.
+                      </li>
+                      <li>
+                        <strong>Compliance frameworks:</strong> Aligned with ISO
+                        27001, GDPR, and industry best practices.
+                      </li>
+                      <li>
+                        <strong>Technical safeguards:</strong> Encrypted
+                        communications, secure storage, and robust access
+                        controls.
+                      </li>
+                    </ul>
                   </AccordionContent>
                 </AccordionItem>
 
+                {/* Q5 */}
                 <AccordionItem
-                  value="security"
+                  value="custom-package"
                   className="rounded-lg px-6"
                   style={{
                     backgroundColor: "#09090B",
@@ -586,12 +690,14 @@ export default function HomePage() {
                   }}
                 >
                   <AccordionTrigger className="text-left font-heading hover:no-underline">
-                    Is your AI secure and compliant?
+                    Can I request a custom service package tailored to my
+                    business needs?
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground font-sans">
-                    Yes, we maintain SOC 2 Type II compliance and follow
-                    enterprise-grade security practices with end-to-end
-                    encryption.
+                    Absolutely. Our services are modular and flexible. Share
+                    your unique challenges and objectives, and we’ll craft a
+                    custom package that aligns with your goals, security
+                    posture, and budget.
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>

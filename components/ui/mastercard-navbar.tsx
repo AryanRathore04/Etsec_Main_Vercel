@@ -111,13 +111,13 @@ export default function MastercardNavbar({ items }: Props) {
                 className="flex items-center text-white font-semibold"
               >
                 <Image
-                  src="/ETSEC.png"
+                  src={collapsed ? "/ETSEC-S-logo.png" : "/ETSEC.png"}
                   alt="ETSEC Logo"
-                  width={collapsed ? 70 : 100}
-                  height={collapsed ? 22 : 32}
+                  width={collapsed ? 32 : 100}
+                  height={collapsed ? 32 : 32}
                   className={`${
                     collapsed
-                      ? "h-5 md:h-4 lg:h-4 xl:h-5"
+                      ? "h-7 md:h-7 lg:h-7 xl:h-8"
                       : "h-8 md:h-7 lg:h-7 xl:h-8"
                   } w-auto object-contain transition-all duration-300`}
                   priority

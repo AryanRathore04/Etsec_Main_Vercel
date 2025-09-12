@@ -21,6 +21,7 @@ import {
   Zap,
   Lock,
   TrendingUp,
+  ChevronDown,
 } from "lucide-react";
 import Image from "next/image";
 import { MagicCard } from "@/components/ui/MagicCards";
@@ -146,8 +147,10 @@ export default function AboutPage() {
               variants={itemVariants}
               className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight"
             >
-              <span className="block text-white">Cyber</span>
-              <span className="block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+              <span className="block text-white text-[0.94em] md:text-[0.96em] lg:text-[0.98em]">
+                Cyber
+              </span>
+              <span className="block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent text-[0.94em] md:text-[0.96em] lg:text-[0.98em]">
                 Security
               </span>
               <span className="block text-gray-300 text-5xl md:text-6xl lg:text-7xl mt-2">
@@ -159,8 +162,8 @@ export default function AboutPage() {
               variants={itemVariants}
               className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light"
             >
-              We transform digital security challenges into competitive
-              advantages through innovative solutions and expert guidance.
+              Your trusted partner in cybersecurity excellence, combining
+              cutting-edge solutions with comprehensive education.
             </motion.p>
 
             <motion.div
@@ -192,10 +195,21 @@ export default function AboutPage() {
             </motion.div>
           </motion.div>
         </div>
+        {/* Scroll hint inside hero */}
+        <div className="absolute bottom-6 left-0 right-0 flex justify-center">
+          <a
+            href="#overview"
+            className="group flex flex-col items-center gap-2 text-gray-400 hover:text-cyan-300 transition-colors"
+            aria-label="Scroll to explore"
+          >
+            <span className="text-sm tracking-wide">Scroll to explore</span>
+            <ChevronDown className="h-6 w-6 animate-bounce" />
+          </a>
+        </div>
       </motion.section>
 
       {/* Bento Grid Layout */}
-      <section className="py-32 bg-black">
+      <section id="overview" className="py-32 bg-black">
         <div className="container mx-auto px-6 max-w-7xl">
           {/* Mission & Vision Bento */}
           <motion.div
@@ -232,10 +246,13 @@ export default function AboutPage() {
                     className="text-xl text-gray-300 leading-relaxed"
                     variants={slideInVariants}
                   >
-                    To democratize enterprise-grade cybersecurity, making
-                    advanced threat protection accessible to organizations of
-                    all sizes. We believe every business deserves robust digital
-                    security without compromise.
+                    Our mission is to create a safer digital world by delivering
+                    advanced, reliable, and customized cybersecurity solutions.
+                    We empower businesses and critical sectors with expert
+                    guidance, innovative technologies, and practical training to
+                    detect, prevent, and respond to evolving threats, ensuring
+                    operational continuity and trust in every digital
+                    interaction
                   </motion.p>
                 </CardContent>
               </Card>
@@ -258,8 +275,12 @@ export default function AboutPage() {
                     Our Vision
                   </h3>
                   <p className="text-gray-300 leading-relaxed">
-                    A digital world where innovation thrives without fear,
-                    protected by intelligent, adaptive security.
+                    Our vision is to be a global leader in cybersecurity,
+                    satellite, and blockchain security services, known for our
+                    commitment to excellence, continuous innovation, and trusted
+                    partnerships. We aspire to protect the digital frontier
+                    across industries, fostering a resilient, secure, and
+                    future-ready digital ecosystem for all.
                   </p>
                 </CardContent>
               </Card>
