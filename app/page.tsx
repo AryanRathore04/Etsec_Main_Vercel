@@ -277,10 +277,11 @@ export default function HomePage() {
               <CardSkeletonContainer>
                 <TeamIntegrationSkeleton />
               </CardSkeletonContainer>
-              <AnimatedCardTitle>Blockchain Security</AnimatedCardTitle>
+              <AnimatedCardTitle>Secure Web Development</AnimatedCardTitle>
               <AnimatedCardDescription>
-                Smart‑contract audits, secure key management, and on‑chain
-                threat monitoring to safeguard digital assets and protocols.
+                Secure web application development, threat-hardened coding
+                practices, and secure deployment pipelines to protect user data
+                and business logic.
               </AnimatedCardDescription>
             </AnimatedCard>
           </div>
@@ -297,12 +298,12 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
-              Smarter Services, Built with AI
+              Enterprise Cybersecurity & Secure Development
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-sans">
-              Everything you need to automate repetitive workflows across
-              operations, marketing, sales, and customer support using AI and
-              custom logic
+              End-to-end cybersecurity (24/7 monitoring, incident response,
+              compliance) paired with secure web development—plus hands-on ETSEC
+              Academy training to upskill your teams.
             </p>
           </div>
 
@@ -365,17 +366,18 @@ export default function HomePage() {
                   <div className="pt-6 lg:px-6">
                     <img
                       src="/production-line-98.svg"
-                      alt="Production Line Automation"
+                      alt="Security automation"
                       className="w-full h-32 object-contain"
                     />
                   </div>
                   <div className="relative z-10 mt-6 space-y-2 text-center">
                     <h2 className="text-lg font-medium transition">
-                      Automate repetitive tasks
+                      Security Automation & Monitoring
                     </h2>
                     <p className="text-foreground">
-                      Streamline security operations with automated threat
-                      detection, response workflows, and compliance reporting
+                      Automated threat detection, intelligent playbooks, and
+                      continuous monitoring to reduce incident dwell time and
+                      improve mean time to resolution.
                     </p>
                   </div>
                 </CardContent>
@@ -430,11 +432,12 @@ export default function HomePage() {
                     </div>
                     <div className="space-y-2">
                       <h2 className="text-lg font-medium transition">
-                        Automated Workflows
+                        Secure Development & Playbooks
                       </h2>
                       <p className="text-foreground">
-                        Custom security workflows that adapt to your business
-                        needs with intelligent automation and machine learning
+                        Security-first development standards, secure CI/CD
+                        pipelines, and tested response playbooks — plus Academy
+                        courses to bring your devs and ops up to speed.
                       </p>
                     </div>
                   </div>
@@ -442,31 +445,31 @@ export default function HomePage() {
                     <div className="relative flex h-full flex-col justify-center space-y-6 py-6">
                       <div className="relative flex w-[calc(50%+0.875rem)] items-center justify-end gap-2">
                         <span className="block h-fit rounded border border-white/20 px-2 py-1 text-xs shadow-sm text-white bg-white/5">
-                          AI Logic
+                          Secure Code
                         </span>
                         <div className="ring-background size-7 ring-4">
                           <div className="size-full rounded-full bg-cyan-500/20 dark:bg-cyan-500/10 flex items-center justify-center">
-                            <Award className="size-4 text-cyan-400" />
+                            <span className="sr-only">secure code</span>
                           </div>
                         </div>
                       </div>
                       <div className="relative ml-[calc(50%-1rem)] flex items-center gap-2">
                         <div className="ring-background size-8 ring-4">
                           <div className="size-full rounded-full bg-white/10 dark:bg-white/5 flex items-center justify-center">
-                            <Lock className="size-4 text-white" />
+                            <span className="sr-only">compliance</span>
                           </div>
                         </div>
                         <span className="block h-fit rounded border border-white/20 px-2 py-1 text-xs shadow-sm text-white bg-white/5">
-                          Custom Rules
+                          Compliance
                         </span>
                       </div>
                       <div className="relative flex w-[calc(50%+0.875rem)] items-center justify-end gap-2">
                         <span className="block h-fit rounded border border-white/20 px-2 py-1 text-xs shadow-sm text-white bg-white/5">
-                          Smart Routing
+                          Training
                         </span>
                         <div className="ring-background size-7 ring-4">
                           <div className="size-full rounded-full bg-white/10 dark:bg-white/5 flex items-center justify-center">
-                            <Zap className="size-4 text-white" />
+                            <span className="sr-only">training</span>
                           </div>
                         </div>
                       </div>

@@ -289,256 +289,277 @@ export default function UpdatesPage() {
         </div>
       </section>
 
-      {/* Featured Alert */}
-      <section className="py-16 bg-[#09090B]">
-        <div className="container mx-auto max-w-7xl px-4">
-          <motion.div
-            className="mb-12"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            <motion.div
-              variants={itemVariants}
-              className="flex items-center space-x-2 mb-6"
-            >
-              <AlertTriangle className="w-5 h-5 text-red-400" />
-              <h2 className="text-2xl font-bold text-white">
-                Critical Security Alert
-              </h2>
-              {featuredUpdate.trending && (
-                <Badge className="bg-red-500/20 text-red-400 border-red-500/30 animate-pulse">
-                  TRENDING
-                </Badge>
-              )}
-            </motion.div>
-
-            <motion.div variants={itemVariants}>
-              <Card className="bg-gradient-to-r from-red-500/10 to-orange-600/10 border-red-500/20 overflow-hidden hover:shadow-2xl transition-all duration-500 group">
-                <div className="grid grid-cols-1 lg:grid-cols-2">
-                  <div className="aspect-video lg:aspect-square bg-gradient-to-br from-red-500/20 to-orange-600/20 flex items-center justify-center relative overflow-hidden">
-                    <AlertTriangle className="h-24 w-24 text-red-400/60 group-hover:scale-110 transition-transform duration-300" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-
-                    {featuredUpdate.urgent && (
-                      <Badge className="absolute top-6 left-6 bg-red-500 text-white animate-pulse">
-                        URGENT
-                      </Badge>
-                    )}
-
-                    <div className="absolute bottom-6 left-6 flex items-center space-x-4">
-                      <div className="flex items-center space-x-1 text-white/80 text-sm">
-                        <Eye className="w-4 h-4" />
-                        <span>{featuredUpdate.views}</span>
-                      </div>
-                      <div className="flex items-center space-x-1 text-white/80 text-sm">
-                        <Clock className="w-4 h-4" />
-                        <span>{featuredUpdate.readTime}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-8 flex flex-col justify-center space-y-6">
-                    <div className="flex items-center space-x-4 flex-wrap gap-2">
-                      <Badge
-                        className={`bg-gradient-to-r ${getCategoryColor(
-                          featuredUpdate.category
-                        )} border-0`}
-                      >
-                        <AlertTriangle className="h-3 w-3 mr-1" />
-                        {featuredUpdate.category}
-                      </Badge>
-                      <div className="flex items-center text-gray-400 text-sm">
-                        <Calendar className="h-4 w-4 mr-1" />
-                        {featuredUpdate.date}
-                      </div>
-                    </div>
-
-                    <h3 className="text-2xl font-bold text-white leading-tight group-hover:text-cyan-400 transition-colors">
-                      {featuredUpdate.title}
-                    </h3>
-
-                    <p className="text-gray-300 leading-relaxed">
-                      {featuredUpdate.excerpt}
-                    </p>
-
-                    <div className="flex gap-4">
-                      <Button
-                        className="bg-gradient-to-r from-red-500 to-orange-600 text-white border-0 hover:scale-105 transition-transform"
-                        onClick={handleReadArticle(
-                          featuredUpdate.id.toString()
-                        )}
-                      >
-                        Read Full Alert
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                      <Button
-                        variant="outline"
-                        className="bg-white/5 border-white/10 text-white hover:bg-white/10"
-                        onClick={handleShareArticle(
-                          featuredUpdate.id.toString()
-                        )}
-                      >
-                        <Share2 className="h-4 w-4 mr-2" />
-                        Share Alert
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
-          </motion.div>
+      <div className="relative">
+        <div className="absolute inset-0 z-50 flex items-center justify-center pointer-events-none">
+          <div className="bg-black/50 backdrop-blur-lg rounded-xl px-8 py-6 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold text-white">
+              Coming Soon
+            </h2>
+            <p className="text-gray-300 mt-2">
+              Security updates and threat intelligence — launching soon.
+            </p>
+          </div>
         </div>
-      </section>
-
-      {/* Recent Updates Grid */}
-      <section className="py-16 bg-[#09090B]">
-        <div className="container mx-auto max-w-7xl px-4">
-          <motion.div
-            className="mb-12"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            <motion.h2
-              variants={itemVariants}
-              className="text-3xl font-bold text-white mb-4"
-            >
-              Latest Security Updates
-            </motion.h2>
-            <motion.p variants={itemVariants} className="text-gray-300 text-lg">
-              Stay informed with our latest threat intelligence and security
-              insights
-            </motion.p>
-          </motion.div>
-
-          <AnimatePresence>
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={containerVariants}
-            >
-              {filteredUpdates.map((update) => (
+        <div className="relative z-40 filter blur-3xl">
+          {/* Featured Alert */}
+          <section className="py-16 bg-[#09090B]">
+            <div className="container mx-auto max-w-7xl px-4">
+              <motion.div
+                className="mb-12"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={containerVariants}
+              >
                 <motion.div
-                  key={update.id}
                   variants={itemVariants}
-                  layout
-                  whileHover={{ y: -5 }}
-                  className="group"
+                  className="flex items-center space-x-2 mb-6"
                 >
-                  <Card className="bg-white/5 border-white/10 overflow-hidden hover:bg-white/10 transition-all duration-300 h-full">
-                    <div className="aspect-video bg-gradient-to-br from-cyan-500/20 to-blue-600/20 flex items-center justify-center relative overflow-hidden">
-                      <Shield className="h-16 w-16 text-white/30 group-hover:scale-110 transition-transform duration-300" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  <AlertTriangle className="w-5 h-5 text-red-400" />
+                  <h2 className="text-2xl font-bold text-white">
+                    Critical Security Alert
+                  </h2>
+                  {featuredUpdate.trending && (
+                    <Badge className="bg-red-500/20 text-red-400 border-red-500/30 animate-pulse">
+                      TRENDING
+                    </Badge>
+                  )}
+                </motion.div>
 
-                      <Badge
-                        className={`absolute top-4 left-4 bg-gradient-to-r ${getCategoryColor(
-                          update.category
-                        )} border-0`}
-                      >
-                        {update.category}
-                      </Badge>
+                <motion.div variants={itemVariants}>
+                  <Card className="bg-gradient-to-r from-red-500/10 to-orange-600/10 border-red-500/20 overflow-hidden hover:shadow-2xl transition-all duration-500 group">
+                    <div className="grid grid-cols-1 lg:grid-cols-2">
+                      <div className="aspect-video lg:aspect-square bg-gradient-to-br from-red-500/20 to-orange-600/20 flex items-center justify-center relative overflow-hidden">
+                        <AlertTriangle className="h-24 w-24 text-red-400/60 group-hover:scale-110 transition-transform duration-300" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
 
-                      <div className="absolute bottom-4 right-4 flex items-center space-x-1 text-white/80 text-sm">
-                        <Eye className="w-4 h-4" />
-                        <span>{update.views}</span>
+                        {featuredUpdate.urgent && (
+                          <Badge className="absolute top-6 left-6 bg-red-500 text-white animate-pulse">
+                            URGENT
+                          </Badge>
+                        )}
+
+                        <div className="absolute bottom-6 left-6 flex items-center space-x-4">
+                          <div className="flex items-center space-x-1 text-white/80 text-sm">
+                            <Eye className="w-4 h-4" />
+                            <span>{featuredUpdate.views}</span>
+                          </div>
+                          <div className="flex items-center space-x-1 text-white/80 text-sm">
+                            <Clock className="w-4 h-4" />
+                            <span>{featuredUpdate.readTime}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="p-8 flex flex-col justify-center space-y-6">
+                        <div className="flex items-center space-x-4 flex-wrap gap-2">
+                          <Badge
+                            className={`bg-gradient-to-r ${getCategoryColor(
+                              featuredUpdate.category
+                            )} border-0`}
+                          >
+                            <AlertTriangle className="h-3 w-3 mr-1" />
+                            {featuredUpdate.category}
+                          </Badge>
+                          <div className="flex items-center text-gray-400 text-sm">
+                            <Calendar className="h-4 w-4 mr-1" />
+                            {featuredUpdate.date}
+                          </div>
+                        </div>
+
+                        <h3 className="text-2xl font-bold text-white leading-tight group-hover:text-cyan-400 transition-colors">
+                          {featuredUpdate.title}
+                        </h3>
+
+                        <p className="text-gray-300 leading-relaxed">
+                          {featuredUpdate.excerpt}
+                        </p>
+
+                        <div className="flex gap-4">
+                          <Button
+                            className="bg-gradient-to-r from-red-500 to-orange-600 text-white border-0 hover:scale-105 transition-transform"
+                            onClick={handleReadArticle(
+                              featuredUpdate.id.toString()
+                            )}
+                          >
+                            Read Full Alert
+                            <ArrowRight className="ml-2 h-4 w-4" />
+                          </Button>
+                          <Button
+                            variant="outline"
+                            className="bg-white/5 border-white/10 text-white hover:bg-white/10"
+                            onClick={handleShareArticle(
+                              featuredUpdate.id.toString()
+                            )}
+                          >
+                            <Share2 className="h-4 w-4 mr-2" />
+                            Share Alert
+                          </Button>
+                        </div>
                       </div>
                     </div>
-
-                    <CardContent className="p-6 space-y-4">
-                      <div className="flex items-center justify-between text-sm text-gray-400">
-                        <div className="flex items-center space-x-1">
-                          <Calendar className="w-4 h-4" />
-                          <span>{update.date}</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          <Clock className="w-4 h-4" />
-                          <span>{update.readTime}</span>
-                        </div>
-                      </div>
-
-                      <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors leading-tight">
-                        {update.title}
-                      </h3>
-
-                      <p className="text-gray-300 text-sm leading-relaxed line-clamp-3">
-                        {update.excerpt}
-                      </p>
-
-                      <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="text-cyan-400 hover:text-cyan-300 hover:bg-cyan-500/10 p-0"
-                          onClick={handleReadArticle(update.id.toString())}
-                        >
-                          Read More
-                          <ArrowRight className="ml-1 h-3 w-3" />
-                        </Button>
-
-                        <div className="flex items-center space-x-2">
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            className="p-2 hover:bg-white/10"
-                            onClick={handleDownloadReport(update.id.toString())}
-                          >
-                            <BookOpen className="h-4 w-4 text-gray-400" />
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            className="p-2 hover:bg-white/10"
-                            onClick={handleShareArticle(update.id.toString())}
-                          >
-                            <Share2 className="h-4 w-4 text-gray-400" />
-                          </Button>
-                        </div>
-                      </div>
-                    </CardContent>
                   </Card>
                 </motion.div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
+              </motion.div>
+            </div>
+          </section>
 
-          {filteredUpdates.length === 0 && (
-            <motion.div
-              className="text-center py-20"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
-              <Search className="h-20 w-20 text-gray-400 mx-auto mb-6" />
-              <h3 className="text-2xl font-bold text-white mb-4">
-                No updates found
-              </h3>
-              <p className="text-gray-300 text-lg">
-                Try adjusting your search terms or category filter.
-              </p>
-            </motion.div>
-          )}
+          {/* Recent Updates Grid */}
+          <section className="py-16 bg-[#09090B]">
+            <div className="container mx-auto max-w-7xl px-4">
+              <motion.div
+                className="mb-12"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={containerVariants}
+              >
+                <motion.h2
+                  variants={itemVariants}
+                  className="text-3xl font-bold text-white mb-4"
+                >
+                  Latest Security Updates
+                </motion.h2>
+                <motion.p
+                  variants={itemVariants}
+                  className="text-gray-300 text-lg"
+                >
+                  Stay informed with our latest threat intelligence and security
+                  insights
+                </motion.p>
+              </motion.div>
 
-          <motion.div
-            className="mt-16 text-center"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={itemVariants}
-          >
-            <Button
-              variant="outline"
-              className="bg-white/5 border-white/10 text-white hover:bg-white/10 px-8 py-3"
-            >
-              Load More Updates
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          </motion.div>
+              <AnimatePresence>
+                <motion.div
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={containerVariants}
+                >
+                  {filteredUpdates.map((update) => (
+                    <motion.div
+                      key={update.id}
+                      variants={itemVariants}
+                      layout
+                      whileHover={{ y: -5 }}
+                      className="group"
+                    >
+                      <Card className="bg-white/5 border-white/10 overflow-hidden hover:bg-white/10 transition-all duration-300 h-full">
+                        <div className="aspect-video bg-gradient-to-br from-cyan-500/20 to-blue-600/20 flex items-center justify-center relative overflow-hidden">
+                          <Shield className="h-16 w-16 text-white/30 group-hover:scale-110 transition-transform duration-300" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+
+                          <Badge
+                            className={`absolute top-4 left-4 bg-gradient-to-r ${getCategoryColor(
+                              update.category
+                            )} border-0`}
+                          >
+                            {update.category}
+                          </Badge>
+
+                          <div className="absolute bottom-4 right-4 flex items-center space-x-1 text-white/80 text-sm">
+                            <Eye className="w-4 h-4" />
+                            <span>{update.views}</span>
+                          </div>
+                        </div>
+
+                        <CardContent className="p-6 space-y-4">
+                          <div className="flex items-center justify-between text-sm text-gray-400">
+                            <div className="flex items-center space-x-1">
+                              <Calendar className="w-4 h-4" />
+                              <span>{update.date}</span>
+                            </div>
+                            <div className="flex items-center space-x-1">
+                              <Clock className="w-4 h-4" />
+                              <span>{update.readTime}</span>
+                            </div>
+                          </div>
+
+                          <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors leading-tight">
+                            {update.title}
+                          </h3>
+
+                          <p className="text-gray-300 text-sm leading-relaxed line-clamp-3">
+                            {update.excerpt}
+                          </p>
+
+                          <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="text-cyan-400 hover:text-cyan-300 hover:bg-cyan-500/10 p-0"
+                              onClick={handleReadArticle(update.id.toString())}
+                            >
+                              Read More
+                              <ArrowRight className="ml-1 h-3 w-3" />
+                            </Button>
+
+                            <div className="flex items-center space-x-2">
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                className="p-2 hover:bg-white/10"
+                                onClick={handleDownloadReport(
+                                  update.id.toString()
+                                )}
+                              >
+                                <BookOpen className="h-4 w-4 text-gray-400" />
+                              </Button>
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                className="p-2 hover:bg-white/10"
+                                onClick={handleShareArticle(
+                                  update.id.toString()
+                                )}
+                              >
+                                <Share2 className="h-4 w-4 text-gray-400" />
+                              </Button>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </AnimatePresence>
+
+              {filteredUpdates.length === 0 && (
+                <motion.div
+                  className="text-center py-20"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                >
+                  <Search className="h-20 w-20 text-gray-400 mx-auto mb-6" />
+                  <h3 className="text-2xl font-bold text-white mb-4">
+                    No updates found
+                  </h3>
+                  <p className="text-gray-300 text-lg">
+                    Try adjusting your search terms or category filter.
+                  </p>
+                </motion.div>
+              )}
+
+              <motion.div
+                className="mt-16 text-center"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={itemVariants}
+              >
+                <Button
+                  variant="outline"
+                  className="bg-white/5 border-white/10 text-white hover:bg-white/10 px-8 py-3"
+                >
+                  Load More Updates
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </motion.div>
+            </div>
+          </section>
         </div>
-      </section>
+      </div>
 
       {/* Newsletter Subscription */}
       <section className="py-24 bg-[#09090B]">

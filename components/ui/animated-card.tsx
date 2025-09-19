@@ -3,7 +3,7 @@ import { animate, motion } from "motion/react";
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { GoCopilot } from "react-icons/go";
-import { Shield, Zap, Users } from "lucide-react";
+import { Shield, Zap, Users, Code, Server, Globe, ScanEye, Satellite, ShieldPlus, Activity, Earth } from "lucide-react";
 
 export function CardDemo() {
   return (
@@ -66,9 +66,7 @@ export const ThreatDetectionSkeleton = () => {
           <Shield className="h-6 w-6 text-cyan-400" />
         </Container>
         <Container className="h-16 w-16 threat-2">
-          <div className="h-8 w-8 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center">
-            <div className="h-4 w-4 bg-white rounded-full animate-pulse" />
-          </div>
+          <ScanEye className="h-8 w-8 text-blue-300"/>
         </Container>
         <Container className="h-12 w-12 threat-3">
           <Zap className="h-6 w-6 text-yellow-400" />
@@ -138,16 +136,16 @@ export const AIAnalyticsSkeleton = () => {
     <div className="p-6 overflow-hidden h-full relative flex items-center justify-center">
       <div className="flex flex-row shrink-0 justify-center items-center gap-2">
         <Container className="h-8 w-8 ai-1">
-          <ClaudeLogo className="h-4 w-4 " />
+          <Satellite className="h-4 w-4 dark:text-indigo-300" />
         </Container>
         <Container className="h-12 w-12 ai-2">
-          <GoCopilot className="h-6 w-6 dark:text-white" />
+          <ShieldPlus className="h-6 w-6 dark:text-emerald-500" />
         </Container>
         <Container className="ai-3">
-          <OpenAILogo className="h-8 w-8 dark:text-white" />
+          <Activity className="h-8 w-8 dark:text-white" />
         </Container>
         <Container className="h-8 w-8 ai-4">
-          <GeminiLogo className="h-4 w-4 " />
+          <Earth className="h-4 w-4 dark:text-blue-300" />
         </Container>
       </div>
 
@@ -206,15 +204,15 @@ export const TeamIntegrationSkeleton = () => {
     <div className="p-6 overflow-hidden h-full relative flex items-center justify-center">
       <div className="flex flex-row shrink-0 justify-center items-center gap-4">
         <Container className="h-12 w-12 team-1">
-          <Users className="h-6 w-6 text-green-400" />
+          <Code className="h-6 w-6 text-green-400" />
         </Container>
         <Container className="h-16 w-16 team-2">
           <div className="h-8 w-8 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center">
-            <Users className="h-4 w-4 text-white" />
+            <Server className="h-4 w-4 text-white" />
           </div>
         </Container>
         <Container className="h-12 w-12 team-3">
-          <Shield className="h-6 w-6 text-blue-400" />
+          <Globe className="h-6 w-6 text-blue-400" />
         </Container>
       </div>
 

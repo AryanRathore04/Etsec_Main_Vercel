@@ -40,6 +40,17 @@ export function Footer() {
               solutions. Your trusted partner in the fight against cyber
               threats.
             </p>
+            {/* Business Hours */}
+            <div>
+              <h4 className="text-sm font-semibold text-foreground mt-2">
+                Business Hours
+              </h4>
+              <ul className="text-muted-foreground text-sm mt-1 space-y-0.5">
+                <li>Mon - Fri: 9:00 AM - 6:00 PM</li>
+                <li>Sat: 10:00 AM - 4:00 PM</li>
+                <li>Sun: Closed</li>
+              </ul>
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -66,12 +77,14 @@ export function Footer() {
               >
                 Latest Updates
               </Link>
+              {/*
               <Link
                 href="/gallery"
                 className="text-muted-foreground hover:text-primary transition-colors text-sm"
               >
                 Gallery
               </Link>
+              */}
             </nav>
           </div>
 
@@ -113,19 +126,20 @@ export function Footer() {
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-primary" />
                 <span className="text-muted-foreground text-sm">
-                  contact@etsec.com
+                  contact@etsecinc.com
                 </span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 text-primary" />
                 <span className="text-muted-foreground text-sm">
-                  +1 (555) 123-4567
+                  +91 86885 78412
                 </span>
               </div>
               <div className="flex items-center space-x-2">
-                <MapPin className="h-4 w-4 text-primary" />
+                <MapPin className="h-13 w-13 text-primary" />
                 <span className="text-muted-foreground text-sm">
-                  New York, NY
+                  401, Srinivasa Homes Road No 4A- Bandari Layout Vasanth Nagar
+                  Colony, Nizampet Hyderabad, Telangana - 500090
                 </span>
               </div>
             </div>

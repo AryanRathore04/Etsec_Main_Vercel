@@ -445,33 +445,33 @@ export default function AboutPage() {
             >
               {[
                 {
-                  name: "Sarah Chen",
-                  role: "Chief Security Officer",
-                  image: "/professional-woman-ceo.png",
-                  experience: "15+ years",
-                  location: "San Francisco",
+                  name: "Prashant Joshi",
+                  role: "Managing Director",
+                  image: "/prashant_sir.jpg",
+                  // experience: "15+ years",
+                  // location: "San Francisco",
                 },
                 {
-                  name: "Marcus Rodriguez",
-                  role: "Lead Penetration Tester",
-                  image: "/professional-man-cybersecurity-expert.png",
-                  experience: "12+ years",
-                  location: "New York",
+                  name: "Atharva Prashant Joshi",
+                  role: "Chief Executive Officer",
+                  image: "/atharva_sir.jpg",
+                  // experience: "12+ years",
+                  // location: "New York",
                 },
                 {
-                  name: "Dr. Emily Watson",
-                  role: "Security Research Director",
-                  image: "/professional-woman-security-researcher.png",
-                  experience: "18+ years",
-                  location: "Washington DC",
+                  name: "Abhash Mandal",
+                  role: "Technical Lead",
+                  image: "/abhash_sir_colourful.png",
+                  // experience: "18+ years",
+                  // location: "Washington DC",
                 },
-                {
-                  name: "Alex Thompson",
-                  role: "Cloud Security Architect",
-                  image: "/professional-person-cloud-security-expert.png",
-                  experience: "10+ years",
-                  location: "Austin",
-                },
+                // {
+                //   name: "Alex Thompson",
+                //   role: "Cloud Security Architect",
+                //   image: "/professional-person-cloud-security-expert.png",
+                //   experience: "10+ years",
+                //   location: "Austin",
+                // },
               ]
                 .slice(0, 3)
                 .map((member, index) => (
@@ -498,7 +498,7 @@ export default function AboutPage() {
                         <p className="text-cyan-400 font-medium mb-3">
                           {member.role}
                         </p>
-                        <div className="flex justify-between text-sm text-gray-400">
+                        {/* <div className="flex justify-between text-sm text-gray-400">
                           <div className="flex items-center">
                             <Calendar className="h-4 w-4 mr-1" />
                             {member.experience}
@@ -507,7 +507,7 @@ export default function AboutPage() {
                             <MapPin className="h-4 w-4 mr-1" />
                             {member.location}
                           </div>
-                        </div>
+                        </div> */}
                       </CardContent>
                     </Card>
                   </motion.div>

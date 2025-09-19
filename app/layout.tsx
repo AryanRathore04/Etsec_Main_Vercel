@@ -16,9 +16,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ETSEC - Professional Cybersecurity Agency",
+  title: "ETSEC Inc.",
   description:
-    "Protecting your digital assets with cutting-edge cybersecurity solutions. Your trusted partner in the fight against cyber threats.",
+    "Empowering your business with cutting-edge cybersecurity solutions and expert training programs. Together, we build a safer digital future.",
   generator: "v0.app",
   icons: {
     icon: "/favicon.ico",
