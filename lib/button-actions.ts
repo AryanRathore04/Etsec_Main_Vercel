@@ -223,7 +223,7 @@ export const buttonActions = {
       const body = encodeURIComponent(
         "Hi ETSEC Team,\n\nI need assistance with:\n\n[Please describe your issue]\n\nBest regards"
       );
-      safeNavigate(`mailto:contact@etsec.com?subject=${subject}&body=${body}`);
+  safeNavigate(`mailto:contact@etsecinc.com?subject=${subject}&body=${body}`);
     },
     analytics: {
       event: "email_support_clicked",

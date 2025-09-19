@@ -40,7 +40,7 @@ const contactMethods = [
     title: "Email Support",
     description:
       "Get detailed assistance with technical questions and product inquiries",
-    contact: "contact@etsec.com",
+  contact: "contact@etsecinc.com",
     responseTime: "Within 2 hours",
     gradient: "from-cyan-500/20 to-blue-600/20",
     action: "Send Email",
@@ -49,7 +49,7 @@ const contactMethods = [
     icon: Headphones,
     title: "Technical Support",
     description: "Product implementation and troubleshooting assistance",
-    contact: "support@etsec.com",
+  contact: "contact@etsecinc.com",
     responseTime: "Within 4 hours",
     gradient: "from-purple-500/20 to-pink-600/20",
     action: "Get Help",
@@ -482,7 +482,7 @@ function ContactPageContent() {
                         Email Support
                       </h3>
                       <p className="text-cyan-400 font-medium text-lg">
-                        contact@etsec.com
+                        contact@etsecinc.com
                       </p>
                       <p className="text-gray-400 text-sm">
                         Response within 2 hours

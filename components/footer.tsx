@@ -21,7 +21,7 @@ export function Footer() {
   return (
     <footer className="bg-card border-t border-border">
       <div className="container mx-auto max-w-screen-2xl px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center">
@@ -88,7 +88,7 @@ export function Footer() {
             </nav>
           </div>
 
-          {/* Services */}
+          {/* Services
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-foreground">Services</h3>
             <nav className="flex flex-col space-y-2">
@@ -117,7 +117,7 @@ export function Footer() {
                 Security Consulting
               </Link>
             </nav>
-          </div>
+          </div> */}
 
           {/* Contact Info */}
           <div className="space-y-4">
@@ -135,11 +135,11 @@ export function Footer() {
                   +91 86885 78412
                 </span>
               </div>
-              <div className="flex items-center space-x-2">
-                <MapPin className="h-13 w-13 text-primary" />
-                <span className="text-muted-foreground text-sm">
-                  401, Srinivasa Homes Road No 4A- Bandari Layout Vasanth Nagar
-                  Colony, Nizampet Hyderabad, Telangana - 500090
+              <div className="flex items-start space-x-3">
+                <MapPin className="h-4 w-4 text-primary mt-1" />
+                <span className="text-muted-foreground text-sm leading-relaxed break-words max-w-[20rem]">
+                  401, Srinivasa Homes Road No 4A — Bandari Layout Vasanth Nagar
+                  Colony, Nizampet, Hyderabad, Telangana — 500090
                 </span>
               </div>
             </div>
@@ -174,7 +174,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-muted-foreground text-sm">
-            © 2024 ETSEC. All rights reserved.
+            © 2025 ETSEC. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link
