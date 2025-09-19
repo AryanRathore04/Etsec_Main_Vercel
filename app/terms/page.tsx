@@ -78,9 +78,9 @@ export default function TermsPage() {
                   <h1 className="text-2xl md:text-3xl font-heading font-bold mb-4">
                     Terms &amp; Conditions
                   </h1>
-                  {/* <p className="text-muted-foreground mb-4">
-                    Last Updated: [Insert Date]
-                  </p> */}
+                  <p className="text-muted-foreground mb-4">
+                    Last Updated: [20-09-2025]
+                  </p>
                 </div>
                 <div className="no-print">
                   <a

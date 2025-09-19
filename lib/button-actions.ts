@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 export type ButtonActionType =
   | "booking"
@@ -36,7 +36,11 @@ const safeNavigate = (url: string) => {
   }
 };
 
-const safeOpenWindow = (url: string, target: string = "_blank", features?: string) => {
+const safeOpenWindow = (
+  url: string,
+  target: string = "_blank",
+  features?: string
+) => {
   if (typeof window !== "undefined") {
     window.open(url, target, features);
   }
@@ -76,7 +80,9 @@ const trackEvent = (event: string, category: string, label?: string) => {
         event_label: label,
       });
     }
-    console.log(`Analytics: ${event} - ${category}${label ? ` - ${label}` : ""}`);
+    console.log(
+      `Analytics: ${event} - ${category}${label ? ` - ${label}` : ""}`
+    );
   }
 };
 
@@ -223,7 +229,9 @@ export const buttonActions = {
       const body = encodeURIComponent(
         "Hi ETSEC Team,\n\nI need assistance with:\n\n[Please describe your issue]\n\nBest regards"
       );
-  safeNavigate(`mailto:contact@etsecinc.com?subject=${subject}&body=${body}`);
+      safeNavigate(
+        `mailto:contact@etsecinc.com?subject=${subject}&body=${body}`
+      );
     },
     analytics: {
       event: "email_support_clicked",
@@ -444,9 +452,7 @@ export const buttonActions = {
     handler: () => {
       trackEvent("modal_opened", "interaction", modalId);
       // Dispatch custom event to open modal
-      safeDispatchEvent(
-        new CustomEvent("openModal", { detail: { modalId } })
-      );
+      safeDispatchEvent(new CustomEvent("openModal", { detail: { modalId } }));
     },
     analytics: {
       event: "modal_opened",

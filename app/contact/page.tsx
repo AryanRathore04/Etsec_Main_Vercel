@@ -40,7 +40,7 @@ const contactMethods = [
     title: "Email Support",
     description:
       "Get detailed assistance with technical questions and product inquiries",
-  contact: "contact@etsecinc.com",
+    contact: "contact@etsecinc.com",
     responseTime: "Within 2 hours",
     gradient: "from-cyan-500/20 to-blue-600/20",
     action: "Send Email",
@@ -49,7 +49,7 @@ const contactMethods = [
     icon: Headphones,
     title: "Technical Support",
     description: "Product implementation and troubleshooting assistance",
-  contact: "contact@etsecinc.com",
+    contact: "contact@etsecinc.com",
     responseTime: "Within 4 hours",
     gradient: "from-purple-500/20 to-pink-600/20",
     action: "Get Help",
@@ -519,42 +519,11 @@ function ContactPageContent() {
             </div>
 
             {/* Stats and Security Guarantee */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
-              {/* Quick Stats */}
-              <motion.div variants={itemVariants}>
-                <Card className="bg-gradient-to-r from-cyan-500/10 to-blue-600/10 border-cyan-500/20 p-6">
-                  <div className="text-center space-y-4">
-                    <h3 className="text-xl font-bold text-white">
-                      Why Choose ETSEC?
-                    </h3>
-                    <div className="grid grid-cols-3 gap-4 text-center">
-                      <div className="space-y-1">
-                        <div className="text-2xl font-bold text-cyan-400">
-                          24/7
-                        </div>
-                        <div className="text-xs text-gray-300">Support</div>
-                      </div>
-                      <div className="space-y-1">
-                        <div className="text-2xl font-bold text-cyan-400">
-                          2hrs
-                        </div>
-                        <div className="text-xs text-gray-300">Response</div>
-                      </div>
-                      <div className="space-y-1">
-                        <div className="text-2xl font-bold text-cyan-400">
-                          500+
-                        </div>
-                        <div className="text-xs text-gray-300">Clients</div>
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-
-              {/* Security Guarantee */}
+            <div className="grid grid-cols-1 gap-8 mt-12">
+              {/* Security Guarantee - full width now that stats were removed */}
               <motion.div variants={itemVariants}>
                 <Card className="bg-gradient-to-r from-green-500/10 to-emerald-600/10 border-green-500/20 p-6">
-                  <div className="flex items-center space-x-4">
+                  <div className="flex flex-col items-center text-center space-y-4">
                     <div className="w-12 h-12 bg-gradient-to-r from-green-500/20 to-emerald-600/20 rounded-xl flex items-center justify-center flex-shrink-0">
                       <Shield className="w-6 h-6 text-green-400" />
                     </div>
