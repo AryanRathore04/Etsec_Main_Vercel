@@ -166,6 +166,10 @@ export default function AboutPage() {
               cutting-edge solutions with comprehensive education.
             </motion.p>
 
+            {/*
+              Original hero stats block commented out per request. Keeping the
+              JSX here for quick restoration if needed.
+
             <motion.div
               variants={itemVariants}
               className="flex flex-wrap justify-center gap-8 pt-8"
@@ -192,6 +196,27 @@ export default function AboutPage() {
                   </div>
                 </motion.div>
               ))}
+            </motion.div>
+            */}
+
+            {/* Replacement content block: concise mission + contact CTA */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col items-center text-center gap-6 pt-8 max-w-3xl mx-auto"
+            >
+              <div className="px-6 py-4 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10">
+                <h3 className="text-2xl font-bold text-white">
+                  Our Commitment
+                </h3>
+                <p className="text-gray-300 mt-2">
+                  We deliver tailored cybersecurity strategies that reduce risk,
+                  enable compliance, and protect what matters most — your
+                  people, systems, and data. We focus on measurable outcomes and
+                  practical readiness.
+                </p>
+              </div>
+
+    
             </motion.div>
           </motion.div>
         </div>
@@ -287,7 +312,7 @@ export default function AboutPage() {
             </motion.div>
 
             {/* Stats Grid */}
-            <motion.div
+            {/* <motion.div
               className="lg:col-span-2 grid grid-cols-2 gap-4"
               variants={itemVariants}
             >
@@ -311,7 +336,7 @@ export default function AboutPage() {
                   <div className="text-sm text-gray-400 mt-1">{stat.label}</div>
                 </motion.div>
               ))}
-            </motion.div>
+            </motion.div> */}
           </motion.div>
 
           {/* Core Values Bento */}
