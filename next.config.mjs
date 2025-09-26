@@ -16,9 +16,6 @@ const nextConfig = {
   // Disable static optimization for the 404 page
   staticPageGenerationTimeout: 1000,
   // Force dynamic rendering for error pages
-  experimental: {
-    appDir: true,
-  },
 };
 
 export default nextConfig;

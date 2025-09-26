@@ -73,7 +73,16 @@ export default function HomePage() {
   });
 
   // Button action handlers
-  const handleBookCall = useButtonAction("bookFreeCall");
+  const handleBookCall = () => {
+    if (typeof window !== "undefined") {
+      // Open external services page in a new tab
+      window.open(
+        "https://services.etsecinc.com/",
+        "_blank",
+        "noopener,noreferrer"
+      );
+    }
+  };
   const handleLearnMore = useButtonAction("learnMore");
   const handleAskQuestion = useButtonAction("askQuestion");
 

@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import { motion } from "motion/react";
 import { useButtonAction } from "@/lib/button-actions";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -64,6 +64,7 @@ function ContactPageContent() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     company: "",
     subject: "",
     message: "",
@@ -168,18 +169,23 @@ function ContactPageContent() {
       return;
     }
 
-    // Execute send message action
-    handleSendMessage();
-
     // Reset form after successful submission
     setFormData({
       name: "",
       email: "",
+      phone: "",
       company: "",
       subject: "",
       message: "",
     });
+
+    // Navigate to thank-you page
+    if (typeof window !== "undefined") {
+      router.push("/thank-you");
+    }
   };
+
+  const router = useRouter();
 
   return (
     <div className="flex flex-col bg-[#09090B] min-h-screen">
@@ -356,11 +362,37 @@ function ContactPageContent() {
               </div>
 
               <Card className="bg-white/5 border-white/10 p-8 max-w-3xl mx-auto">
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form
+                  onSubmit={handleSubmit}
+                  name="contact"
+                  className="space-y-6 contact-form"
+                >
+                  {/* Honeypot anti-spam field (visually hidden) */}
+                  <label
+                    style={{
+                      opacity: 0,
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      height: 0,
+                      width: 0,
+                      zIndex: -1,
+                      overflow: "hidden",
+                    }}
+                  >
+                    Don’t fill this out if you're human:
+                    <input
+                      name="trap-field"
+                      autoComplete="off"
+                      tabIndex={-1}
+                      onChange={() => {}}
+                    />
+                  </label>
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-300">
-                        Full Name *
+                        Full Name
                       </label>
                       <Input
                         name="name"
@@ -374,7 +406,7 @@ function ContactPageContent() {
 
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-300">
-                        Email Address *
+                        Email Address
                       </label>
                       <Input
                         name="email"
@@ -391,6 +423,20 @@ function ContactPageContent() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-300">
+                        Phone Number
+                      </label>
+                      <Input
+                        name="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        placeholder="+91 86885 78412"
+                        className="bg-white/5 border-white/20 text-white placeholder-gray-400 focus:border-cyan-500"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-gray-300">
                         Company
                       </label>
                       <Input
@@ -401,24 +447,11 @@ function ContactPageContent() {
                         className="bg-white/5 border-white/20 text-white placeholder-gray-400 focus:border-cyan-500"
                       />
                     </div>
-
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-gray-300">
-                        Subject
-                      </label>
-                      <Input
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleInputChange}
-                        placeholder="How can we help?"
-                        className="bg-white/5 border-white/20 text-white placeholder-gray-400 focus:border-cyan-500"
-                      />
-                    </div>
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-300">
-                      Message *
+                      Message
                     </label>
                     <Textarea
                       name="message"
